@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import TodoList from './Todo/TodoList'
 import Context from './context';
 
 function App() {
-  const [todos, setTodos] = React.useState([
+  const [todos, setTodos] = useState([
     {id: 1, completed: false, title: 'Купить хлеб'},
     {id: 2, completed: false, title: 'Купить масло'},
     {id: 3, completed: false, title: 'Купить молоко'}
@@ -25,6 +25,8 @@ function App() {
     setTodos(todos.filter(todo => todo.id !== id))
   }
 
+  //контекст виден вниз по дереву, начиная с компонента, в котором определен провайдер (но не виден вверх)
+  //
   return (
     <Context.Provider value={{removeTodoMethod: removeTodo}}>
       <div className="wrapper">

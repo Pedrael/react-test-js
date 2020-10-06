@@ -24,12 +24,15 @@ function TodoItem({ todo, index, onChangeMethod }) { //передаем мето
   if (todo.completed) {
     classes.push('done')
   }
-
+  //checked={todo.completed} если начальные значения комплитед не все фоллс, чтоб отображалось с самого начала как выполненное
+  const onClickHandler = () => removeTodoMethod(todo.id)
+  
   return (
     <li style={styles.li}>
       <span className={classes.join(' ')}>
+        {/*jsx comment*/}
         <input
-          checked={todo.completed}//если начальные значения комплитед не все фоллс, чтоб отображалось с самого начала как выполненное
+          checked={todo.completed}
           type="checkbox"
           onChange={() => onChangeMethod(todo.id)}
         />
@@ -38,12 +41,12 @@ function TodoItem({ todo, index, onChangeMethod }) { //передаем мето
         {todo.title}
       </span>
 
-      // <button className='rm' onClick={() => removeTodoMethod(todo.id)}>&times;</button>
-      <button className='rm' onClick={removeTodoMethod.bind(null, todo.id)}>&times;</button>
+
+      <button className='rm' onClick={onClickHandler}>&times;</button>
     </li>
   )
 }
-
+// <button className='rm' onClick={removeTodoMethod.bind(null, todo.id)}>&times;</button>
 TodoItem.propTypes = {
   todo: PropTypes.object.isRequired,
   index: PropTypes.number,

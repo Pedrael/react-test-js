@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import TodoItem from './TodoItem'
+import Context from '../context'
 
 const styles = {
   ul: {
@@ -16,6 +17,11 @@ function TodoList(props) {
       {props.todos.map((todo, index) => {
         return <TodoItem todo = {todo} key={todo.id} index={index} onChangeMethod={props.onToggleMethod}/>
       })}
+      <Context.Consumer>
+        {(value) => {
+          console.log(value)
+        }}
+      </Context.Consumer>
     </ul>
   )
 }
