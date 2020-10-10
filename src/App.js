@@ -51,7 +51,7 @@ function App() {
           completed: false,
         },
       ])
-    );
+    )
   }
 
   return (
